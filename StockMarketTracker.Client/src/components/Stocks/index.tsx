@@ -49,6 +49,12 @@ function Stocks() {
 		}
 	}, [stockQuery.data, wsConnection]);
 
+	useEffect(() => {
+		if (stockQuery.isError) {
+			alert("Something went wrong while connecting to the server");
+		}
+	}, [stockQuery.isError, stockQuery.error]);
+
 	return (
 		<>
 			<div>
