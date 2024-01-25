@@ -30,6 +30,14 @@ Test project setup with MSTest for unit tests and Moq for mocking interfaces. On
 
 Configured default logger to log in console. External loggers can be easiliy configured in program.cs startup code as logging extensions as per requirements.
 
+#### Swagger UI for .NET API
+
+![Alt text](snapshots/image-2.png)
+
+#### Solution and project structure:
+
+![Alt text](snapshots/image-3.png)
+
 ---
 
 ## StockMarketTracker.Client
@@ -54,6 +62,11 @@ Recharts for data visualization.
 
 _Todo: Unit tests and logging_
 
+![Alt text](snapshots/image.png)
+
+Search function:
+![Alt text](snapshots/image-1.png)
+
 ---
 
 ## StockMarketTracker.PriceStreaming
@@ -70,13 +83,11 @@ This code represents a mock server for generating simulated stock market data. I
 
 2. **Installation:**
 
-   - No additional dependencies need to be installed.
+   - run `npm install`
 
 3. **Run the Server:**
    - Execute the script to run the WebSocket server on port 4321.
-     ```bash
-     node your-script.js
-     ```
+     `node index.js`
    - The WebSocket server will be running on `ws://localhost:4321`.
 
 ### WebSocket Server
