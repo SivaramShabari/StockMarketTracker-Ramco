@@ -48,6 +48,10 @@ The API follows a three-layer architecture:
 **Solution Structure:**
 ![Solution Structure](snapshots/image-3.png)
 
+**Database Mock Data - SQL Server:**
+
+- ![Alt text](snapshots/image-4.png)
+
 ---
 
 # StockMarketTracker.Client
@@ -72,8 +76,15 @@ React JS client with a single-page application for tracking stock data. Key feat
 
 **Screenshots:**
 
+- Stocks screen with stock details:
 - ![Stock Tracker](snapshots/image.png)
+- Search function (Server side filter)
 - ![Search Function](snapshots/image-1.png)
+
+**Stock chart for historical stock price:**
+
+- ![Alt text](snapshots/image-5.png)
+- ![Alt text](snapshots/image-6.png)
 
 ---
 
@@ -106,9 +117,5 @@ Execute `node index.js` to start the WebSocket server on port 4321 (`ws://localh
 1. Connect to the WebSocket server using a WebSocket client.
 2. Send a JSON array of stock data to the server.
 3. Receive simulated stock data in response.
-
-**Screenshots:**
-
-- ![WebSocket Server](snapshots/image-2.png)
 
 ---
