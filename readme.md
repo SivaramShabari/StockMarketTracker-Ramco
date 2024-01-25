@@ -1,120 +1,114 @@
-This repository has 3 different projects
+# Stock Market Tracker
 
-## StockMarketTracker.API
+This repository comprises three distinct projects, each serving a specific purpose.
 
-C# .NET Restful API to manage stock data and other business logic
+# StockMarketTracker.API
 
-It has 3 end points to
+**Description:**
+C# .NET Restful API designed to manage stock data and implement business logic. The API offers three endpoints to:
 
-    - get all stocks,
-    - get stocks by filter and
-    - get historical stock data
+1. Get all stocks.
+2. Get stocks filtered by criteria.
+3. Retrieve historical stock data.
 
-It has a 3 layer architecture:
+**Architecture:**
+The API follows a three-layer architecture:
 
-    - The controller to handle http requests
-    - The business layer to handle application logic
-    - The repository layer to interact with databases and other data sources
+- **Controller:** Handles HTTP requests.
+- **Business Layer:** Manages application logic.
+- **Repository Layer:** Interacts with databases and data sources.
 
-The code adheres as much to clean code principles and SOLID patterns. Automapper is used to convert Data domain models to data transfer objects.
+**Key Features:**
 
-The API is designed with scalability and flexibility in mind to add and change required features. Ad it sticks to standard .NET core features, the code is configurable to external dependencies like database connection.
+- Adheres to clean code principles and SOLID patterns.
+- Utilizes AutoMapper for seamless conversion between Data domain models and data transfer objects.
+- Configurable to external dependencies, such as database connections.
+- Implements a scalable and flexible design for adding or modifying features.
 
-SQL server database is used to store Stock and historical price data and Dapper as an ORM in the repository layer.
+**Database and ORM:**
 
-#### Unit Testing
+- SQL Server is used for storing stock and historical price data.
+- Dapper serves as the ORM in the repository layer.
 
-Test project setup with MSTest for unit tests and Moq for mocking interfaces. Only one test case added due to time constraint.
+**Unit Testing:**
 
-#### Logging
+- MSTest framework for unit tests.
+- Moq for mocking interfaces.
+- Limited test cases added due to time constraints.
 
-Configured default logger to log in console. External loggers can be easiliy configured in program.cs startup code as logging extensions as per requirements.
+**Logging:**
 
-#### Swagger UI for .NET API
+- Default logger configured to log in the console.
+- External loggers can be easily integrated through program.cs startup code.
 
-![Alt text](snapshots/image-2.png)
+**Swagger UI:**
 
-#### Solution and project structure:
+- API documented and accessible through Swagger UI.
 
-![Alt text](snapshots/image-3.png)
-
----
-
-## StockMarketTracker.Client
-
-React JS Client with a single page to track stock data
-
-Search bar to search stocks by name
-
-Stocks have live price updates from mock price stream server usign web socket connection
-
-Only searched stocks get subscribed to server for real time price
-
-Redux pattern (with custom hooks) to handle state to enhance scalability
-
-React Query library (SWR - stale while revalidate) through custom hooks to handle api data to handle multiple scenarios
-
-Typescript for type safety to minimize run time errors.
-
-Tailwind css + daisy ui for a good looking UI with theming system.
-
-Recharts for data visualization.
-
-_Todo: Unit tests and logging_
-
-![Alt text](snapshots/image.png)
-
-Search function:
-![Alt text](snapshots/image-1.png)
+**Solution Structure:**
+![Solution Structure](snapshots/image-3.png)
 
 ---
 
-## StockMarketTracker.PriceStreaming
+# StockMarketTracker.Client
 
-A node js server with websockets for mocking realtime stock price stream
+**Description:**
+React JS client with a single-page application for tracking stock data. Key features include a search bar for stock lookup, live price updates from a mock price stream server via WebSocket connection, and a Redux pattern for state management.
 
-This code represents a mock server for generating simulated stock market data. It uses WebSocket to communicate with clients and sends mock stock prices based on the received input.
+**Key Features:**
 
-### Setup
+- Search bar for searching stocks by name.
+- Real-time stock price updates with websockets.
+- Subscription to real-time prices **only for searched stocks**.
+- Redux pattern with custom hooks for enhanced scalability.
+- React Query library for API data management using SWR (stale while revalidate).
+- TypeScript for type safety.
+- Tailwind CSS + Daisy UI for an aesthetically pleasing UI with theming.
+- Recharts for data visualization.
 
-1. **Dependencies:**
+**To-Do:**
 
-   - Ensure that you have Node.js installed.
+- Implement unit tests and logging.
 
-2. **Installation:**
+**Screenshots:**
 
-   - run `npm install`
+- ![Stock Tracker](snapshots/image.png)
+- ![Search Function](snapshots/image-1.png)
 
-3. **Run the Server:**
-   - Execute the script to run the WebSocket server on port 4321.
-     `node index.js`
-   - The WebSocket server will be running on `ws://localhost:4321`.
+---
 
-### WebSocket Server
+# StockMarketTracker.PriceStreaming
 
-The server listens for incoming WebSocket connections on port 4321.
+**Description:**
+Node.js server with WebSocket functionality for mocking real-time stock price streams.
 
-- **Connection Event:**
+**Setup:**
 
-  - When a client connects, it logs the event.
-  - When a client disconnects, it logs the event.
+1. Install Node.js.
+2. Run `npm install`.
 
-- **Message Event:**
-  - Upon receiving a message from the client (expected as a JSON array), it generates mock stock data and sends it back to the client.
+**Run the Server:**
+Execute `node index.js` to start the WebSocket server on port 4321 (`ws://localhost:4321`).
 
-### Mock Data Generation
+**WebSocket Server:**
 
-The `getJsonData` function generates mock stock data based on the input array received from the client.
+- Listens for WebSocket connections on port 4321.
+- Logs connection and disconnection events.
+- Generates mock stock data upon receiving a message from the client.
 
-- **Output Format:**
+**Mock Data Generation:**
 
-  - The output is a JSON string containing a timestamp and an array of stock prices.
+- Generates a JSON string with a timestamp and an array of stock prices.
+- `generateDayStockPrice` function calculates new stock prices based on the last day's price and specified volatility.
 
-- **Stock Price Generation:**
-  - The `generateDayStockPrice` function is used to generate a new stock price based on the last day's price and a specified volatility percentage.
+**Example Usage:**
 
-#### Example Usage
-
-1. Connect to the WebSocket server using a WebSocket client or library.
+1. Connect to the WebSocket server using a WebSocket client.
 2. Send a JSON array of stock data to the server.
 3. Receive simulated stock data in response.
+
+**Screenshots:**
+
+- ![WebSocket Server](snapshots/image-2.png)
+
+---
